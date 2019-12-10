@@ -1,0 +1,18 @@
+opam-version: "2.0"
+authors: ["Vladimir Komendantskiy <komendantsky@gmail.com>"]
+license: "Apache-2.0"
+maintainer: "Vladimir Komendantskiy <komendantsky@gmail.com>"
+homepage: "https://github.com/vkomenda/threshold_crypto.ml/"
+bug-reports: "https://github.com/vkomenda/threshold_crypto.ml/issues/"
+build: [
+  ["dune" "build" "-p" name "-j" jobs]
+  ["dune" "exec" "examples/threshold_enc.exe"] {with-test}
+]
+depends: [
+  "ocaml"   {>= "4.09.0"}
+  "dune"    {build & >= "2.0.0"}
+  "base_bigstring"
+]
+synopsis: """
+Ocaml bindings to the Rust crate threshold_crypto, and example programs using those bindings
+"""

@@ -1,0 +1,20 @@
+(include_subdirs unqualified)
+
+(rule
+ (deps (source_tree .))
+ (targets libthreshold_crypto_ocaml_stubs.a dllthreshold_crypto_ocaml_stubs.so)
+ (action
+  (progn
+    (run cargo build -Z unstable-options --out-dir . --target-dir ../rust --release)
+    (run mv libthreshold_crypto_ocaml_stubs.so ./dllthreshold_crypto_ocaml_stubs.so)
+    )
+  )
+)
+
+(library
+ (name threshold_crypto)
+ (public_name threshold_crypto)
+ (foreign_archives threshold_crypto_ocaml_stubs)
+ (c_library_flags (-lpthread -lc -lm))
+ (libraries base_bigstring)
+)

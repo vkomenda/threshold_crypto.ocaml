@@ -1,0 +1,5 @@
+(executable
+ (name threshold_enc)
+ (modules threshold_enc)
+ (libraries threshold_crypto)
+)
